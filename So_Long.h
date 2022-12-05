@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:02:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/05 17:06:21 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/05 20:51:56 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct So_long
 	int 	i;
 	int		j;
 	int 	counter;
+	void  	*get;
+	int		fd;
 }			t_str;
 
 char		**ft_split(char *s, char c);
@@ -65,5 +67,6 @@ char		*ft_strdup(char *s1);
 char		**ft_checkmap(char *map, t_str *data);
 int 		validmap(char **str, t_str *data,char *map);
 void		zeroing_data(t_str *data);
+void		check_extra(char **str, t_str *data);
 
 #endif
