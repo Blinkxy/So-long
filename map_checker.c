@@ -6,30 +6,42 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:37 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/05 22:55:58 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/13 19:48:31 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "So_Long.h"
 
-// void	ft_error(int validmap())
-// {
-	
-// 	stderr(1);
-	
-// }
-
-
-
-char	**ft_checkmap(char *map, t_str *data)
+int	valid_mapfile(char *map)
 {
-	int		i;
-	char	**str;
-	int		j;
-	
-	zeroing_data(&data);
-	map = "maps/map.ber";
-	data->fd = open(map, O_RDONLY);
+	int		fd;
+	char	*ext;
+	int		len;
+
+	fd = open(map, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf("Map file invalid or not found\n");
+		return (0);
+	}
+	ext = ft_strnstr(map, ".ber", ft_strlen(map));
+	if (!ext)
+		return (0);
+	len = ft_strlen(ext);
+	if (ext && ft_strncmp(ext, ".ber", len) == 0 && ext[len - 1] == 'r'
+		&& ext[len - 2] == 'e' && ext[len - 3] == 'b' && ext[len - 4] == '.')
+		return (1);
+	close(fd);
+	return (0);
+}
+
+void	ft_checkmap(char *str, t_str *data)
+{
+	int	i;
+	int	j;
+
+	zeroing_data(data);
+	data->fd = open(str, O_RDONLY);
 	data->get = get_next_line(data->fd);
 	i = 0;
 	while (data->get != NULL)
@@ -39,67 +51,51 @@ char	**ft_checkmap(char *map, t_str *data)
 		data->counter++;
 		i++;
 	}
-	if(data->get == NULL)
+	if (data->get == NULL)
 		data->counter++;
 	close(data->fd);
-	data->fd = open(map, O_RDONLY);
-	str = (char **)ft_calloc(i, sizeof(char *));
+	data->fd = open(str, O_RDONLY);
+	data->map = (char **)ft_calloc(data->counter, sizeof(char *));
 	j = 0;
 	while (i-- >= 0)
-		str[j++] = get_next_line(data->fd);
-	str[j] = NULL;
+		data->map[j++] = get_next_line(data->fd);
+	data->map[j] = NULL;
 	close(data->fd);
-	return (str);
 }
 
-int validmap(char **str, t_str *data,char *map)
+int	validmap(t_str *data)
 {
-    str = ft_checkmap(map,&data);
-	while(++str[data->i] != NULL)
+	while (data->map[(data->i)] != NULL)
 	{
-		while(str[data->i][++data->j] && ++data->i < data->counter)
-    	{
-        	if(ft_strchr("P01CE",str[data->i][data->j] == 1) && ft_strlen(str[data->i] = ft_strlen(str[0])) 
-			&& (str[0][data->j] == '1' && str[data->counter -1][data->j] == '1') && str[1][0] == '1' && str[data->counter -2][0] == '1'
-			&& str[1][ft_strlen(str[0])]== '1' && str[data->counter -2][ft_strlen(str[0])] == '1' && (data->counter -1) != ft_strlen(str[0])) 
-					check_extra(str, &data);
-			
-				
-			
-    	}
+		data->j = 0;
+		while (data->map[data->i][(data->j)])
+		{
+			if (ft_strchr("P01CE\n", data->map[data->i][data->j]) == 0)
+				return (0);
+			if (ft_strlen(data->map[data->i]) != ft_strlen(data->map[0]))
+				return (0);
+			if (data->map[0][data->j] != '1' && data->map[data->counter
+				- 1][data->j] != '1')
+				return (0);
+			if (data->map[data->counter] != 0)
+				return (0);
+			if (data->map[data->i][0] != '1'
+				|| data->map[data->i][ft_strlen(data->map[data->i]) - 1] != '1')
+				return (0);
+			check_extra(data->map, data);
+			data->j++;
+		}
+		data->i++;
 	}
+	if (data->exit_c == 1 && data->player_c == 1 && data->coins_c >= 1)
+		return (1);
+	return (0);
 }
 
-
-void	zeroing_data(t_str *data)
+void	mlx_looping(t_str *data)
 {
-	data->coins = 0;
-	data->player = 0;
-	data->wall = 0;
-	data->i = -1;
-	data->j = -1;
-	data->exit = 0;
-	data->counter = 0;
-}
-
-void	check_extra(char **str, t_str *data)
-{
-	if(str[data->i][data->j] = "E")
-		data->exit++;
-	if(str[data->i][data->j] = "C")
-		data->coins++;
-	if(str[data->i][data->j] = "P")
-		data->player++;
-}
-int main()
-{
-	t_str data;
-	char *map;
-	
-	data = *(t_str*)ft_calloc(1,sizeof(data));
-	map = "maps/map.ber";
-	ft_checkmap(map,&data);
-	ft_printf("counter:%d\n", data.counter);
-	ft_printf("i:%d\n", data.i);
-	return(0);
+	mlx_hook(data->win, 2, 0, escape_key, data);
+	mlx_hook(data->win, 17, 0, x_close, data);
+	mlx_key_hook(data->win, move_key, data);
+	mlx_loop(data->mlx);
 }

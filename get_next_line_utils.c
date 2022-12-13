@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:59:07 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/11/28 20:29:46 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/11 19:09:18 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*get_each_line(char *stash)
 	}
 	if (stash[i] == '\n')
 	{
-		line[i] = stash[i];
+		line[i] = '\0';
 		i++;
 	}
 	return (line);
