@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:26:55 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/13 19:46:53 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:21:47 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	init_mlx(t_str *data)
 	data->win = mlx_new_window(data->mlx, (data->j) * 50, (data->counter - 1)
 			* 50, "The Legend of Zelda: So_Long");
 }
+
 int	escape_key(int key, t_str *data)
 {
 	(void)data;

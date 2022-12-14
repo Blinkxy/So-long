@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:37 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/13 19:48:31 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:36:31 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	mlx_looping(t_str *data)
 {
 	mlx_hook(data->win, 2, 0, escape_key, data);
 	mlx_hook(data->win, 17, 0, x_close, data);
-	mlx_key_hook(data->win, move_key, data);
+	mlx_key_hook(data->win,move_player, data);
 	mlx_loop(data->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:02:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/13 19:47:18 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:09:06 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,14 @@ void		move_bot(t_str *data);
 void		move_top(t_str *data);
 void		move_left(t_str *data);
 void		ft_checkmap(char *str, t_str *data);
-int			move_key(int key, t_str *data);
+int			move_player(int key, t_str *data);
 void		move_to_wall(int key, t_str *data);
 void		frame_coins(int key, t_str *data);
 void		frame_exit(int key, t_str *data);
 void		frame_all(int key, t_str *data);
 void		init_mlx(t_str *data);
+void		move_sub(int key, t_str *data);
+void		f_check_sub(t_str *data);
+int			valid_path(t_str *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:46 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/13 20:00:28 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:30:17 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,37 @@ void	first_frame(t_str *data)
 		{
 			if (data->map[i][j] == '1')
 				mlx_put_image_to_window(data->mlx, data->win, data->wall, j
-						* 50, i * 50);
+					* 50, i * 50);
 			if (data->map[i][j] == 'E')
 				mlx_put_image_to_window(data->mlx, data->win, data->exit, j
-						* 50, i * 50);
+					* 50, i * 50);
 			if (data->map[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx, data->win, data->coins, j
-						* 50, i * 50);
+					* 50, i * 50);
 			j++;
 		}
 		i++;
 	}
+}
+
+void	f_check_sub(t_str *data)
+{
+	if (data->map[data->i][data->j] == '1')
+		mlx_put_image_to_window(data->mlx, data->win, data->wall,
+			data->x, data->y);
+	if (data->map[data->i][data->j] == 'E')
+		mlx_put_image_to_window(data->mlx, data->win, data->exit,
+			data->x, data->y);
+	if (data->map[data->i][data->j] == 'P')
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->player,
+			data->j * 50, data->i * 50);
+		data->py = (data->i) * 50;
+		data->px = (data->j) * 50;
+	}
+	if (data->map[data->i][data->j] == 'C')
+		mlx_put_image_to_window(data->mlx, data->win, data->coins,
+			data->x, data->y);
 }
 
 void	frame_check(t_str *data)
@@ -49,22 +69,7 @@ void	frame_check(t_str *data)
 		data->j = -1;
 		while (data->map[data->i][++(data->j)])
 		{
-			if (data->map[data->i][data->j] == '1')
-				mlx_put_image_to_window(data->mlx, data->win, data->wall,
-						data->x, data->y);
-			if (data->map[data->i][data->j] == 'E')
-				mlx_put_image_to_window(data->mlx, data->win, data->exit,
-						data->x, data->y);
-			if (data->map[data->i][data->j] == 'P')
-			{
-				mlx_put_image_to_window(data->mlx, data->win, data->player,
-						data->j * 50, data->i * 50);
-				data->py = (data->i) * 50;
-				data->px = (data->j) * 50;
-			}
-			if (data->map[data->i][data->j] == 'C')
-				mlx_put_image_to_window(data->mlx, data->win, data->coins,
-						data->x, data->y);
+			f_check_sub(data);
 			data->x += 50;
 		}
 		data->y += 50;
