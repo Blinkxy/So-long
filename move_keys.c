@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:58:53 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/14 15:27:41 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/19 22:34:40 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,37 @@ void	move_to_wall(int key, t_str *data)
 			/ 50)] == '1')
 		mlx_put_image_to_window(data->mlx, data->win, data->player, data->px,
 			data->py);
-	if (key == 125 && data->map[((data->py) / 50) + 1][((data->px) / 50)]
-			== '1')
+	if (key == 125 && data->map[((data->py) / 50) + 1][((data->px)
+			/ 50)] == '1')
 		mlx_put_image_to_window(data->mlx, data->win, data->player, data->px,
 			data->py);
+}
+
+void	frame_coins(int key, t_str *data)
+{
+	if (key == 124 && data->map[(data->py) / 50][((data->px) / 50) + 1] == 'C')
+	{
+		data->map[(data->py) / 50][((data->px) / 50) + 1] = '0';
+		first_frame(data);
+		data->coins_c--;
+	}
+	if (key == 123 && data->map[(data->py) / 50][((data->px) / 50) - 1] == 'C')
+	{
+		data->map[(data->py) / 50][((data->px) / 50) - 1] = '0';
+		data->coins_c--;
+		first_frame(data);
+	}
+	if (key == 125 && data->map[((data->py) / 50) + 1][(data->px) / 50] == 'C')
+	{
+		data->map[((data->py) / 50) + 1][(data->px) / 50] = '0';
+		data->coins_c--;
+		first_frame(data);
+	}
+	if (key == 126 && data->map[((data->py) / 50) - 1][((data->px)
+			/ 50)] == 'C')
+	{
+		data->map[((data->py) / 50) - 1][((data->px) / 50)] = '0';
+		data->coins_c--;
+		first_frame(data);
+	}
 }

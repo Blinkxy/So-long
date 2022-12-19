@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 19:22:17 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/08 21:59:16 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:39:08 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,3 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	}
 	return (0);
 }
-
-// #include<stdio.h>
-// #include<string.h>
-
-// int main()
-// {
-//     char *s1 = "yolq";
-//     char *s2 = "yolq";
-//     printf("%d",ft_strncmp(s1,s2,4));
-//     return(0);
-// }

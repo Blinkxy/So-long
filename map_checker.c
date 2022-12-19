@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:37 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/14 15:36:31 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/19 22:32:51 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_checkmap(char *str, t_str *data)
 	int	i;
 	int	j;
 
-	zeroing_data(data);
 	data->fd = open(str, O_RDONLY);
 	data->get = get_next_line(data->fd);
 	i = 0;
@@ -63,6 +62,30 @@ void	ft_checkmap(char *str, t_str *data)
 	close(data->fd);
 }
 
+void	ft_checkmap_bis(char *str, t_str *data)
+{
+	int	i;
+	int	j;
+
+	data->fd = open(str, O_RDONLY);
+	data->get = get_next_line(data->fd);
+	i = 0;
+	while (data->get != NULL)
+	{
+		free(data->get);
+		data->get = get_next_line(data->fd);
+		i++;
+	}
+	close(data->fd);
+	data->fd = open(str, O_RDONLY);
+	data->map_bis = (char **)ft_calloc(data->counter, sizeof(char *));
+	j = 0;
+	while (i-- >= 0)
+		data->map_bis[j++] = get_next_line(data->fd);
+	data->map_bis[j] = NULL;
+	close(data->fd);
+}
+
 int	validmap(t_str *data)
 {
 	while (data->map[(data->i)] != NULL)
@@ -70,7 +93,7 @@ int	validmap(t_str *data)
 		data->j = 0;
 		while (data->map[data->i][(data->j)])
 		{
-			if (ft_strchr("P01CE\n", data->map[data->i][data->j]) == 0)
+			if (ft_strchr("P01CE", data->map[data->i][data->j]) == 0)
 				return (0);
 			if (ft_strlen(data->map[data->i]) != ft_strlen(data->map[0]))
 				return (0);
@@ -96,6 +119,6 @@ void	mlx_looping(t_str *data)
 {
 	mlx_hook(data->win, 2, 0, escape_key, data);
 	mlx_hook(data->win, 17, 0, x_close, data);
-	mlx_key_hook(data->win,move_player, data);
+	mlx_key_hook(data->win, move_player, data);
 	mlx_loop(data->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:42:46 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/08 21:35:16 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:38:59 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,3 @@ char	*ft_strnstr(char *haystack, char *needle, int len)
 	}
 	return (NULL);
 }
-
-// #include<stdio.h>
-// int main()
-// {
-//     printf("%s",ft_strnstr("lorem ipsum dolor sit amet", "lorem", 15));
-//     return (0);
-// }

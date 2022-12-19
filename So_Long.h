@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:02:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/14 16:09:06 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/19 22:14:15 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ typedef struct So_long
 	void	*player;
 	void	*coins;
 	int		exit_c;
+	int		exit_bis;
 	int		player_c;
 	int		coins_c;
+	int		coins_bis;
 	void	*exit;
 	void	*grass;
 	int		img_width;
@@ -47,12 +49,14 @@ typedef struct So_long
 	char	*path_dirt;
 	int		i;
 	int		j;
+	int		virus;
 	int		counter;
 	void	*get;
 	int		fd;
 	int		x;
 	int		y;
 	char	**map;
+	char	**map_bis;
 	int		py;
 	int		px;
 }			t_str;
@@ -87,7 +91,6 @@ int			ft_strncmp(char *s1, char *s2, int n);
 int			x_close(t_str *data);
 int			escape_key(int key, t_str *data);
 void		mlx_looping(t_str *data);
-void		path_images_mlx(t_str *data);
 void		frame_check(t_str *data);
 void		move_right(t_str *data);
 void		move_bot(t_str *data);
@@ -103,5 +106,10 @@ void		init_mlx(t_str *data);
 void		move_sub(int key, t_str *data);
 void		f_check_sub(t_str *data);
 int			valid_path(t_str *data);
-
+void		infect_map(t_str *data, int i, int j);
+int			infect_map_exit(t_str *data, int i, int j);
+int			valid_bis(t_str *data);
+int			infect_bis(t_str *data, int i, int j);
+int			exit_free(t_str *data);
+void		ft_checkmap_bis(char *str, t_str *data);
 #endif
