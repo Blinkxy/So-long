@@ -6,29 +6,29 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:26:55 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/19 22:33:30 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/20 15:50:06 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "So_Long.h"
 
-void	check_extra(char **str, t_str *data)
+void	check_extra(t_str *data)
 {
-	if (str[data->i][data->j] == 'E')
+	if (data->map[data->i][data->j] == 'E')
 	{
 		(data->exit_c)++;
 		(data->exit_bis)++;
 	}
-	if (str[data->i][data->j] == 'C')
+	if (data->map[data->i][data->j] == 'C')
 	{
 		(data->coins_c)++;
 		(data->coins_bis)++;
 	}
-	if (str[data->i][data->j] == 'P')
+	if (data->map[data->i][data->j] == 'P')
 	{
 		(data->player_c)++;
-		data->px = data->j;
 		data->py = data->i;
+		data->px = data->j;
 	}
 }
 
@@ -37,7 +37,7 @@ void	init_mlx(t_str *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		exit(0);
-	data->win = mlx_new_window(data->mlx, (data->j) * 50, (data->counter - 1)
+	data->win = mlx_new_window(data->mlx, (data->j) * 50, (data->i)
 			* 50, "The Legend of Zelda: So_Long");
 	data->path_player = "textures/player.xpm";
 	data->path_wall = "textures/wall.xpm";

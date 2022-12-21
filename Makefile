@@ -7,7 +7,7 @@ CC = cc
 AR = ar rcs
 SRC = So_Long.c ft_split.c ft_itoa.c ft_putstr.c ft_putnbr.c ft_printf.c ft_strnstr.c data_checker.c \
 ft_putnbrhex.c ft_argprint.c get_next_line.c get_next_line_utils.c ft_substr.c map_checker.c ft_strncmp.c \
-moves_checker.c move_keys.c
+moves_checker.c move_keys.c infect_bis.c
 
 OBJ = $(SRC:.c=.o)
 

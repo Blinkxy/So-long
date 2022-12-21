@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:02:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/19 22:14:15 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/20 16:21:37 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char		*ft_strjoin(char *s1, char *s2, int k, int l);
 char		*ft_strdup(char *s1);
 int			validmap(t_str *data);
 void		zeroing_data(t_str *data);
-void		check_extra(char **str, t_str *data);
+void		check_extra(t_str *data);
 char		*ft_strnstr(char *haystack, char *needle, int len);
 int			valid_mapfile(char *map);
 int			ft_strncmp(char *s1, char *s2, int n);
@@ -112,4 +112,5 @@ int			valid_bis(t_str *data);
 int			infect_bis(t_str *data, int i, int j);
 int			exit_free(t_str *data);
 void		ft_checkmap_bis(char *str, t_str *data);
+void		infectos(t_str *data, int *res, int i, int j);
 #endif

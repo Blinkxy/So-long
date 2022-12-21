@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:37 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/19 22:32:51 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/20 16:25:56 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,24 +88,24 @@ void	ft_checkmap_bis(char *str, t_str *data)
 
 int	validmap(t_str *data)
 {
-	while (data->map[(data->i)] != NULL)
+	while (data->map[data->i])
 	{
 		data->j = 0;
-		while (data->map[data->i][(data->j)])
+		while (data->map[data->i][data->j])
 		{
 			if (ft_strchr("P01CE", data->map[data->i][data->j]) == 0)
 				return (0);
 			if (ft_strlen(data->map[data->i]) != ft_strlen(data->map[0]))
 				return (0);
-			if (data->map[0][data->j] != '1' && data->map[data->counter
-				- 1][data->j] != '1')
+			if (data->map[0][data->j] != '1'
+			|| data->map[(data->counter) - 2][data->j] != '1')
 				return (0);
 			if (data->map[data->counter] != 0)
 				return (0);
 			if (data->map[data->i][0] != '1'
 				|| data->map[data->i][ft_strlen(data->map[data->i]) - 1] != '1')
 				return (0);
-			check_extra(data->map, data);
+			check_extra(data);
 			data->j++;
 		}
 		data->i++;
@@ -117,8 +117,8 @@ int	validmap(t_str *data)
 
 void	mlx_looping(t_str *data)
 {
-	mlx_hook(data->win, 2, 0, escape_key, data);
+	mlx_key_hook(data->win, escape_key, data);
 	mlx_hook(data->win, 17, 0, x_close, data);
-	mlx_key_hook(data->win, move_player, data);
+	mlx_hook(data->win, 2, 0, move_player, data);
 	mlx_loop(data->mlx);
 }

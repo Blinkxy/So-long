@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:46 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/19 22:37:05 by mzoheir          ###   ########.fr       */
+/*   Updated: 2022/12/20 15:49:52 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ int	main(int ac, char **av)
 		ft_checkmap(av[1], data);
 		ft_checkmap_bis(av[1], data);
 		if (!data->map)
-		return (0);
+			return (0);
 		if (!data->map_bis)
-		return (0);
+			return (0);
 		full_check(data);
 		init_mlx(data);
 		frame_check(data);
