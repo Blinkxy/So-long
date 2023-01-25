@@ -6,11 +6,11 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:59:07 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/19 22:07:48 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:36:11 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_Long.h"
+#include "so_long.h"
 
 char	*ft_strjoin(char *s1, char *s2, int k, int l)
 {

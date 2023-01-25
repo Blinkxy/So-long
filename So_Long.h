@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:02:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/20 16:21:37 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 20:10:49 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct So_long
 	void	*dirt;
 	void	*player;
 	void	*coins;
+	void	*enemy;
 	int		exit_c;
 	int		exit_bis;
 	int		player_c;
@@ -47,6 +48,7 @@ typedef struct So_long
 	char	*path_coins;
 	char	*path_exit;
 	char	*path_dirt;
+	char	*path_enemy;
 	int		i;
 	int		j;
 	int		virus;
@@ -59,6 +61,9 @@ typedef struct So_long
 	char	**map_bis;
 	int		py;
 	int		px;
+	int		moves;
+	int		ey;
+	int		ex;
 }			t_str;
 
 char		**ft_split(char *s, char c);
@@ -113,4 +118,5 @@ int			infect_bis(t_str *data, int i, int j);
 int			exit_free(t_str *data);
 void		ft_checkmap_bis(char *str, t_str *data);
 void		infectos(t_str *data, int *res, int i, int j);
+void		frame_bis(t_str *data, int i, int j);
 #endif

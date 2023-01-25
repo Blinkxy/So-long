@@ -1,44 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_checker.c                                    :+:      :+:    :+:   */
+/*   moves_checker_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 19:05:59 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/01/25 19:35:11 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:35:03 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	frame_exit(int key, t_str *data)
-{
-	if (key == 124 && data->map[(data->py) / 50][((data->px) / 50) + 1] == 'E'
-		&& data->coins_c == 0)
-	{
-		ft_printf("GG! You WIN !!!\n");
-		exit_free(data);
-	}
-	if (key == 123 && data->map[(data->py) / 50][((data->px) / 50) - 1] == 'E'
-		&& data->coins_c == 0)
-	{
-		ft_printf("GG! You WIN !!!\n");
-		exit_free(data);
-	}
-	if (key == 125 && data->map[((data->py) / 50) + 1][(data->px) / 50] == 'E'
-		&& data->coins_c == 0)
-	{
-		ft_printf("GG! You WIN !!!\n");
-		exit_free(data);
-	}
-	if (key == 126 && data->map[((data->py) / 50) - 1][((data->px) / 50)] == 'E'
-		&& data->coins_c == 0)
-	{
-		ft_printf("GG! You WIN !!!\n");
-		exit_free(data);
-	}
-}
+#include "so_long_bonus.h"
 
 void	infect_map(t_str *data, int i, int j)
 {
@@ -87,6 +59,22 @@ int	infect_bis(t_str *data, int i, int j)
 		res = 1;
 	}
 	return (res);
+}
+
+void	infectos(t_str *data, int *res, int i, int j)
+{
+	if (data->map_bis[i][j] == 'P' && data->map_bis[i + 1][j] != '1'
+		&& data->map_bis[i + 1][j] != 'P' && data->map_bis[i + 1][j] != 'X')
+	{
+		data->map_bis[i + 1][j] = 'P';
+		*res = 1;
+	}
+	if (data->map_bis[i][j] == 'P' && data->map_bis[i - 1][j] != '1'
+		&& data->map_bis[i - 1][j] != 'P' && data->map_bis[i - 1][j] != 'X')
+	{
+		data->map_bis[i - 1][j] = 'P';
+		*res = 1;
+	}
 }
 
 int	valid_bis(t_str *data)

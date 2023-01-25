@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checker.c                                      :+:      :+:    :+:   */
+/*   map_checker_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:37 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/01/25 19:36:21 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:54:07 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	valid_mapfile(char *map)
 {
@@ -93,7 +93,7 @@ int	validmap(t_str *data)
 		data->j = 0;
 		while (data->map[data->i][data->j])
 		{
-			if (ft_strchr("P01CE", data->map[data->i][data->j]) == 0)
+			if (ft_strchr("P01CEX", data->map[data->i][data->j]) == 0)
 				return (0);
 			if (ft_strlen(data->map[data->i]) != ft_strlen(data->map[0]))
 				return (0);
@@ -117,8 +117,9 @@ int	validmap(t_str *data)
 
 void	mlx_looping(t_str *data)
 {
-	mlx_key_hook(data->win, escape_key, data);
+	mlx_hook(data->win, 2, 0, escape_key, data);
 	mlx_hook(data->win, 17, 0, x_close, data);
-	mlx_hook(data->win, 2, 0, move_player, data);
+	mlx_key_hook(data->win, move_player, data);
+	mlx_loop_hook(data->mlx, enemy_moves, data);
 	mlx_loop(data->mlx);
 }

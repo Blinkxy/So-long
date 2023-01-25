@@ -6,11 +6,11 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:49:41 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/12/16 20:15:43 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:36:14 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_Long.h"
+#include "so_long.h"
 
 char	*ft_read_and_join(int fd, char *stash)
 {

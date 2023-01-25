@@ -6,11 +6,11 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:56:45 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/11/27 19:42:35 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:35:53 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_Long.h"
+#include "so_long.h"
 
 int	ft_putnbr(long n)
 {

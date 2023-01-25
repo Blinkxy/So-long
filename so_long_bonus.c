@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   So_Long.c                                          :+:      :+:    :+:   */
+/*   So_Long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:02:46 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/01/25 20:12:06 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 20:15:57 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	first_frame(t_str *data)
 {
@@ -19,12 +19,12 @@ void	first_frame(t_str *data)
 
 	i = 0;
 	mlx_put_image_to_window(data->mlx, data->win, data->dirt, 0, 0);
-	while (data->map[i])
+	while ((data->map[i]))
 	{
 		j = 0;
 		while (data->map[i][j])
 		{
-			frame_bis(data, i, j);
+			frame_utils(data, i, j);
 			j++;
 		}
 		i++;
@@ -33,37 +33,30 @@ void	first_frame(t_str *data)
 
 void	f_check_sub(t_str *data)
 {
-	if (data->map[data->i][data->j] == '1')
-		mlx_put_image_to_window(data->mlx, data->win, data->wall, data->x,
-			data->y);
-	if (data->map[data->i][data->j] == 'E')
-		mlx_put_image_to_window(data->mlx, data->win, data->exit, data->x,
-			data->y);
 	if (data->map[data->i][data->j] == 'P')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->player, data->j
-			* 50, data->i * 50);
 		data->py = (data->i) * 50;
 		data->px = (data->j) * 50;
 	}
-	if (data->map[data->i][data->j] == 'C')
-		mlx_put_image_to_window(data->mlx, data->win, data->coins, data->x,
-			data->y);
+	if (data->map[data->i][data->j] == 'X')
+	{
+		data->ey = (data->i) * 50;
+		data->ex = (data->j) * 50;
+	}
 }
 
 void	frame_check(t_str *data)
 {
-	data->i = -1;
-	while (data->map[++(data->i)])
+	data->i = 0;
+	while (data->map[(data->i)])
 	{
-		data->x = 0;
-		data->j = -1;
-		while (data->map[data->i][++(data->j)])
+		data->j = 0;
+		while (data->map[data->i][(data->j)])
 		{
 			f_check_sub(data);
-			data->x += 50;
+			data->j++;
 		}
-		data->y += 50;
+		data->i++;
 	}
 }
 
@@ -102,8 +95,9 @@ int	main(int ac, char **av)
 		if (!data->map_bis)
 			return (0);
 		full_check(data);
-		init_mlx(data);
 		frame_check(data);
+		init_mlx(data);
+		first_frame(data);
 		mlx_looping(data);
 	}
 	return (0);

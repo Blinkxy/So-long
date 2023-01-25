@@ -6,11 +6,11 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:02:56 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/11/27 19:41:25 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:35:48 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_Long.h"
+#include "so_long.h"
 
 int	ft_argprint(va_list p, char c)
 {

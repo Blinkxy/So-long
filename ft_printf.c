@@ -6,11 +6,11 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:43:28 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/11/28 22:50:37 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:35:51 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_Long.h"
+#include "so_long.h"
 
 int	ft_putchar(char c)
 {

@@ -6,11 +6,11 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:01:48 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/11/28 22:48:54 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/01/25 19:36:08 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_Long.h"
+#include "so_long.h"
 
 char	*ft_substr(char *s, int start, int len)
 {
